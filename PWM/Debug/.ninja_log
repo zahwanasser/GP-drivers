@@ -1,0 +1,18 @@
+# ninja log v5
+16	1597	6669000129417765	C:/Users/m/Desktop/PWM/Debug/Obj/main.o	9b27c238a1d204f
+0	345	6669003283407207	C:/Users/m/Desktop/PWM/Debug/Obj/pwm.o	b56ba56614f6509c
+351	1653	6669003295940908	C:/Users/m/Desktop/PWM/Debug/Exe/pwm.out	a0345b6214d3a0a9
+33	600	6669014868897364	C:/Users/m/Desktop/PWM/Debug/Obj/pwm.o	b56ba56614f6509c
+606	679	6669014869846743	C:/Users/m/Desktop/PWM/Debug/Exe/pwm.out	a0345b6214d3a0a9
+3	1063	6669374045952262	C:/Users/m/Desktop/PWM/Debug/Obj/pwm.o	b56ba56614f6509c
+1070	1186	6669374047347691	C:/Users/m/Desktop/PWM/Debug/Exe/pwm.out	a0345b6214d3a0a9
+4	421	6669377977738905	C:/Users/m/Desktop/PWM/Debug/Obj/pwm.o	b56ba56614f6509c
+428	513	6669377978678325	C:/Users/m/Desktop/PWM/Debug/Exe/pwm.out	a0345b6214d3a0a9
+13	124	6670094765894078	C:/Users/m/Desktop/PWM/Debug/Obj/main.o	9b27c238a1d204f
+1	94	6670095056169421	C:/Users/m/Desktop/PWM/Debug/Obj/main.o	9b27c238a1d204f
+9	768	6670095062768892	C:/Users/m/Desktop/PWM/Debug/Obj/pwm.o	b56ba56614f6509c
+774	1543	6670095070674386	C:/Users/m/Desktop/PWM/Debug/Exe/pwm.out	a0345b6214d3a0a9
+4	648	6670128745499550	C:/Users/m/Desktop/PWM/Debug/Obj/pwm.o	b56ba56614f6509c
+656	720	6670128746269056	C:/Users/m/Desktop/PWM/Debug/Exe/pwm.out	a0345b6214d3a0a9
+3	730	6674463183626455	C:/Users/m/Desktop/PWM/Debug/Obj/pwm.o	b56ba56614f6509c
+736	846	6674463184855699	C:/Users/m/Desktop/PWM/Debug/Exe/pwm.out	a0345b6214d3a0a9
