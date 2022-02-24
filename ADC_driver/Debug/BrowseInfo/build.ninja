@@ -1,0 +1,51 @@
+##IAR Ninja build file
+
+
+#Rules
+rule COMPILER_XCL
+  command = C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.0\common\bin\XclFileGenerator.exe $xclcommand -f "$rspfile_name"
+  description = IAR_NEW_TOOL+++COMPILER_XCL+++$in+++"C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.0\common\bin\XclFileGenerator.exe" $flags
+  rspfile = $rspfile_name
+  rspfile_content = $flags
+
+rule INDEXER
+  command = C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.0\common\bin\SourceIndexer.exe $flags
+  depfile = $out.dep
+  description = IAR_NEW_TOOL+++INDEXER+++$out+++"C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.0\common\bin\SourceIndexer.exe" $flags
+
+rule MAKEBROWSE
+  command = C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.0\common\bin\makeBrowseData.exe $flags
+  description = IAR_NEW_TOOL+++MAKEBROWSE+++$out+++"C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.0\common\bin\makeBrowseData.exe" $flags
+
+rule PDBLINK
+  command = C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.0\common\bin\PbdLink.exe $flags
+  description = IAR_NEW_TOOL+++PDBLINK+++$out+++"C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.0\common\bin\PbdLink.exe" $flags
+
+
+
+#Build steps
+build D$:\Melio\EECE22\ADC\Debug\BrowseInfo\ADC_Normal.xcl : COMPILER_XCL 
+  xclcommand = -source_file D$:\Melio\EECE22\ADC\ADC_Normal.c -xcl_file D$:\Melio\EECE22\ADC\Debug\BrowseInfo\ADC_Normal.xcl -macro_file D$:\Melio\EECE22\ADC\Debug\BrowseInfo\ADC_Normal.tmp -icc_path "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.0\arm\bin\iccarm.exe"
+  flags = D$:\Melio\EECE22\ADC\ADC_Normal.c -o D$:\Melio\EECE22\ADC\Debug\Obj\ --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa --no_clustering --no_scheduling --debug --endian=little --cpu=Cortex-M3 -e --fpu=None --dlib_config "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.0\arm\inc\c\DLib_Config_Normal.h" -Ol --predef_macros D$:\Melio\EECE22\ADC\Debug\BrowseInfo\ADC_Normal.tmp
+  rspfile_name = D$:\Melio\EECE22\ADC\Debug\BrowseInfo\ADC_Normal.xcl.rsp
+
+build D$:\Melio\EECE22\ADC\Debug\BrowseInfo\main.xcl : COMPILER_XCL 
+  xclcommand = -source_file D$:\Melio\EECE22\ADC\main.c -xcl_file D$:\Melio\EECE22\ADC\Debug\BrowseInfo\main.xcl -macro_file D$:\Melio\EECE22\ADC\Debug\BrowseInfo\main.tmp -icc_path "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.0\arm\bin\iccarm.exe"
+  flags = D$:\Melio\EECE22\ADC\main.c -o D$:\Melio\EECE22\ADC\Debug\Obj\ --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa --no_clustering --no_scheduling --debug --endian=little --cpu=Cortex-M3 -e --fpu=None --dlib_config "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.0\arm\inc\c\DLib_Config_Normal.h" -Ol --predef_macros D$:\Melio\EECE22\ADC\Debug\BrowseInfo\main.tmp
+  rspfile_name = D$:\Melio\EECE22\ADC\Debug\BrowseInfo\main.xcl.rsp
+
+build D$:\Melio\EECE22\ADC\Debug\BrowseInfo\ADC_Normal.pbi : INDEXER D$:\Melio\EECE22\ADC\Debug\BrowseInfo\ADC_Normal.xcl |  $
+D$:\Melio\EECE22\ADC\ADC_Normal.c
+  flags = -out=D$:\Melio\EECE22\ADC\Debug\BrowseInfo\ADC_Normal.pbi -f D$:\Melio\EECE22\ADC\Debug\BrowseInfo\ADC_Normal.xcl
+
+build D$:\Melio\EECE22\ADC\Debug\BrowseInfo\main.pbi : INDEXER D$:\Melio\EECE22\ADC\Debug\BrowseInfo\main.xcl |  $
+D$:\Melio\EECE22\ADC\main.c
+  flags = -out=D$:\Melio\EECE22\ADC\Debug\BrowseInfo\main.pbi -f D$:\Melio\EECE22\ADC\Debug\BrowseInfo\main.xcl
+
+build D$:\Melio\EECE22\ADC\Debug\BrowseInfo\ADC.pbw : MAKEBROWSE D$:\Melio\EECE22\ADC\Debug\BrowseInfo\ADC.pbd
+  flags = D$:\Melio\EECE22\ADC\Debug\BrowseInfo\ADC.pbd -output D$:\Melio\EECE22\ADC\Debug\BrowseInfo\ADC.pbw
+
+build D$:\Melio\EECE22\ADC\Debug\BrowseInfo\ADC.pbd : PDBLINK D$:\Melio\EECE22\ADC\Debug\BrowseInfo\ADC_Normal.pbi |  $
+D$:\Melio\EECE22\ADC\Debug\BrowseInfo\main.pbi
+  flags = -M D$:\Melio\EECE22\ADC\Debug\BrowseInfo\ADC.pbd D$:\Melio\EECE22\ADC\Debug\BrowseInfo\ADC_Normal.pbi D$:\Melio\EECE22\ADC\Debug\BrowseInfo\main.pbi
+
