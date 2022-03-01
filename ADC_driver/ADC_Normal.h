@@ -39,6 +39,16 @@ typedef enum{
   bit0EOS, bit1EOS, bit2EOS, bit3EOS, bit4EOS, bit5EOS, bit6EOS, bit7EOS
 }EndOfSequence_bit_number;
 
+typedef enum{
+
+AIN0, AIN1, AIN2, AIN3, AIN4, AIN5, AIN6, AIN7, AIN8, AIN9, AIN10, AIN11
+}input;
+
+typedef enum{
+
+ PRI_0, PRI_1, PRI_2, PRI_3
+}PRI;
+
 typedef struct{
     SampleSequencer_Number SSC_No;
     Trigger_Mode Trigger;
@@ -48,11 +58,21 @@ typedef struct{
     EndOfSequence_bit_number EOS_bit_no;
 }ADC_NormalModeStruct;
 
+typedef struct{
+
+  input ADC_INPUT;
+  PRI SSPRI_0; //Priority of Sample Sequencer 0
+  PRI SSPRI_1; //Priority of Sample Sequencer 1
+  PRI SSPRI_2; //Priority of Sample Sequencer 2
+  PRI SSPRI_3; //Priority of Sample Sequencer 3
+ 
+}ADC_CONFIG;
+
 /*******************************************************************************
  *                      Functions Prototypes                                   *
  *******************************************************************************/
 void ADC_NormalMode(ADC_NormalModeStruct* ADC_NormalModePtr);
-
+void ADC_INIT(const ADC_CONFIG* ADC_CONFIG); //ADC Initialization function
 
 
 #endif /* ADC_Normal_H_ */
